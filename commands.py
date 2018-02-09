@@ -1,20 +1,3 @@
-"""
-Copyright (C) 2018  jcb#1317
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <http://www.gnu.org/licenses/>.
-"""
-
 import discord
 import asyncio
 import async_timeout
@@ -81,3 +64,25 @@ async def setstatus(client, message):
         await client.change_presence(game=discord.Game(name=(message.content[9:])))
     else:
         await send(client, message.channel, discord.Embed(title=resources["messages"]["wrong_perms"], color=colors[1]))
+
+
+async def purge(client, message):
+    mc = False
+    for i in message.author.roles:
+        if i.permissions.manage_channels:
+            mc = True
+        elif i.permissions.administrator:
+            mc = True
+    if mc and len(message.content) > len(prefix) + 6:
+        try:
+            int(message.content[len(prefix) + 6:])
+            await client.purge_from(message.channel, limit=int(message.content[len(prefix) + 6:]))
+        except discord.errors.Forbidden:
+            em = discord.Embed(title=resources["messages"]["self_wrong_perms"].format("'Manage Messages'"),
+                               color=colors[1])
+            await send(client, message.channel, em)
+    elif mc:
+        em = discord.Embed(title=resources["messages"]["invalid_arguments"].format("'" + prefix + "clear 50'"), color=colors[1])
+        await send(client, message.channel, em)
+    elif len(message.content) > len(prefix) + 6:
+        await send(client, message.channel, discord.Embed(resources["messages"]["wrong_perms"]))
