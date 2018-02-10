@@ -1,22 +1,31 @@
 """
 Copyright (C) 2018  jcb#1317
+
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
+
 This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
+
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
+
 
 import discord
 import asyncio
 import async_timeout
 import wikipedia
+from random import choice
 
+async def eightball(client, message):
+    ans = choice(resources["messages"]["8ball_answers"])
+    em = discord.Embed(title=ans, color=colors[0])
+    await send(client, message.channel, em)
 
 async def initdump(res):
     global resources
@@ -61,7 +70,7 @@ async def help_command(client, message):
 async def wiki(client, message):
     if len(message.content) > len(prefix) + len("wiki") + 1:
         try:
-            cur_req = wikipedia.page(message.content[len(prefix) + len("wiki") - 1:])
+            cur_req = wikipedia.page(title=message.content[len(prefix) + len("wiki") + 1:])
             content = ""
             if len(cur_req.summary) >= 400:
                 content = cur_req.summary[:400] + "..."
@@ -70,7 +79,10 @@ async def wiki(client, message):
             em = discord.Embed(title=cur_req.title, description=content, color=colors[0])
         except wikipedia.exceptions.DisambiguationError as e:
             em = discord.Embed(description=str(e))
-    await send(client, message.channel, em)
+        except:
+            em = discord.Embed(description=resources["messages"]["wiki_not_found"].format(
+                message.content[len(prefix) + len("wiki") + 1:]), color=colors[1])
+        await send(client, message.channel, em)
 
 
 async def setstatus(client, message):
@@ -96,7 +108,8 @@ async def purge(client, message):
                                color=colors[1])
             await send(client, message.channel, em)
     elif mc:
-        em = discord.Embed(title=resources["messages"]["invalid_arguments"].format("'" + prefix + "clear 50'"), color=colors[1])
+        em = discord.Embed(title=resources["messages"]["invalid_arguments"].format("'" + prefix + "clear 50'"),
+                           color=colors[1])
         await send(client, message.channel, em)
     elif len(message.content) > len(prefix) + 6:
         await send(client, message.channel, discord.Embed(resources["messages"]["wrong_perms"]))

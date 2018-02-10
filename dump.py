@@ -32,7 +32,10 @@ mes = {
     "spec_help_header": "Help for {0}{1}",
     "help_error": "The command '{}' doesn't exist",
     "invalid_arguments": ":x: Invalid Arguments provided. Try something like {}",
-    "wrong_perms": ":x: You cannot do this"
+    "wrong_perms": ":x: You cannot do this",
+    "self_wrong_perms": ":x: I do not have the permissions to do this. I need {}",
+    "wiki_not_found": "The page ***{}*** doesn't exist",
+    "8ball_answers": ("Yes", "No", "Maybe", "I don't know")
 }
 
 cmds = {
@@ -40,7 +43,9 @@ cmds = {
         "Basic Help command. Use {0}help to get an overview of all commands and {0}help <command> to get help on a specific command",
         c.help_command),
     "wiki": ("Get information from a wikipedia page", c.wiki),
-    "status": ("Change the bot's status (Bot Owner only)", c.setstatus)
+    "status": ("Change the bot's status (Bot Owner only)", c.setstatus),
+    "clear": ("Clear the last n message of the channel", c.purge),
+    "8ball": ("Get the answer to your questions", c.eightball)
 }
 
 res = {"core": core, "messages": mes, "commands": cmds}
