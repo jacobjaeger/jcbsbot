@@ -3,8 +3,8 @@
 This Bot is a little project by me (jcb#1317). It is a highly costumizable Discord Bot. You can easily add your own commands.
 ## Setup
 ### Dependencies
-Python 3.4.2+ and the corresponding `discord.py` version
-###Initial Setup
+Python 3.5+ and the corresponding `discord.py` version
+### Initial Setup
 
    * Go to dump.py
    * On line 21, in the core dict, set `"token"` to your bot token
