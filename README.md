@@ -17,3 +17,6 @@ Python 3.5+ and the corresponding `discord.py` version
    * In `commands.py`, add the command coroutine. It should take two parameters, `client` and `message`
    * In `dump.py`, in the `cmds` dictionary, add an entry with the command name (without prefix) as the key and a tuple with the description for the help command and the coroutine as the value
 
+### Example:
+
+If your prefix was `!` and you wanted to add a command that replies to `!ping` with `Pong`, you would have to add a coroutine in `commands.py` that looked like this: `async def ping(client, message): await client.send_message(message.channel, "Pong")`. Then, you would have to add an entry in the `cmds` dictionary with the key `ping` and the value `("Replies with pong", c.ping)`. And now you're all set
