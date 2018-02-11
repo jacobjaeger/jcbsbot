@@ -35,7 +35,8 @@ mes = {
     "wrong_perms": ":x: You cannot do this",
     "self_wrong_perms": ":x: I do not have the permissions to do this. I need {}",
     "wiki_not_found": "The page ***{}*** doesn't exist",
-    "8ball_answers": ("Yes", "No", "Maybe", "I don't know")
+    "8ball_answers": ("Yes", "No", "Maybe", "I don't know"),
+    "info": "Bot based on jcbsbot by jcb#1317 https://github.com/jcb1317/jcbsbot"
 }
 
 cmds = {
@@ -45,7 +46,8 @@ cmds = {
     "wiki": ("Get information from a wikipedia page", c.wiki),
     "status": ("Change the bot's status (Bot Owner only)", c.setstatus),
     "clear": ("Clear the last n message of the channel", c.purge),
-    "8ball": ("Get the answer to your questions", c.eightball)
+    "8ball": ("Get the answer to your questions", c.eightball),
+    "info": ("Get information about this bot", c.bot_info)
 }
 
 res = {"core": core, "messages": mes, "commands": cmds}

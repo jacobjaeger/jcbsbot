@@ -42,6 +42,10 @@ async def send(client, channel, embed):
     except discord.errors.Forbidden:
         pass
 
+async def bot_info(client, message):
+    em = discord.Embed(title=resources["messages"]["info"], color=colors[0])
+    em.set_author(name=client.user.name, icon_url=client.user.avatar_url)
+    await send(client, message.channel, em)
 
 async def help_command(client, message):
     split = message.content.split(" ")
