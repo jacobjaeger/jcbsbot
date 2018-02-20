@@ -42,7 +42,7 @@ async def on_message(message):
     except:
         basic_cmd = None
     if c.startswith(prefix) and basic_cmd in list(cmds.keys()):
-        await (cmds[basic_cmd][1])(client, message)
+        await (cmds[basic_cmd][1])(client, message, basic_cmd)
 
 
 client.run(token)
