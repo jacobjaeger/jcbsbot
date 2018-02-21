@@ -4,6 +4,7 @@ This Bot is a little project by me (jcb#1317). It is a highly costumizable Disco
 ## Setup
 ### Dependencies
 Python 3.5+ and the corresponding `discord.py` version
+
 ### Initial Setup
 
    * Go to dump.py
