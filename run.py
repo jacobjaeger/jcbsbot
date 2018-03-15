@@ -17,7 +17,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import asyncio
 import discord
-import async_timeout
 import dump
 import commands
 
