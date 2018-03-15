@@ -1,5 +1,6 @@
 # jcbsbot
 ## About
+### ATTENTION: This Version of the Bot is deprecated! The new version is no longer open source! It will soon be hosted 24/7!
 This Bot is a little project by me (jcb#1317). It is a highly costumizable Discord Bot. You can easily add your own commands.
 ## Setup
 ### Dependencies
