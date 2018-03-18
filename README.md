@@ -2,6 +2,9 @@
 ## About
 ### ATTENTION: This Version of the Bot is deprecated! The new version is no longer open source! It will soon be hosted 24/7!
 This Bot is a little project by me (jcb#1317). It is a highly costumizable Discord Bot. You can easily add your own commands.
+<a href="https://discordbots.org/bot/373252109753384960" >
+  <img src="https://discordbots.org/api/widget/373252109753384960.svg" alt="Amadeus" />
+</a>
 ## Setup
 ### Dependencies
 Python 3.5+ and the corresponding `discord.py` version
